@@ -1,22 +1,37 @@
 
+<div class="w3-panel w3-pale-green">
+        <p class="w3-center w3-large w3-green w3-round" style="font-weight: bold">
+            ADD YOUR SERVER
+        </p>
+        <input class="w3-input" (input)="onServerNameUpdate($event)" placeholder="Enter Your Server Name" />
+        <p class="w3-large w3-text-green">You Entered: {{ serverName }}</p>
+        <button class="w3-button w3-blue w3-round w3-small" [disabled]="checkButtonStatusAdd()" 
+        (click)="onServerCreation()">Add Server</button>
+        <button class="w3-button w3-blue w3-round w3-small w3-margin" [disabled]="checkButtonStatusDelete()" 
+        (click)="onServerDelete()">Delete Server</button>
+</div>
 
-<input class="w3-input" (input)="onServerNameUpdate($event)" placeholder="Enter Your Server Name" />
-<p>You Entered: {{ serverName }}</p>
-<button class="w3-button w3-blue w3-round w3-small" [disabled]="disableServerAdd" 
-(click)="onServerCreation()">Add Server</button>
-<button class="w3-button w3-blue w3-round w3-small w3-margin" [disabled]="disableServerDelete" 
-(click)="onServerDelete()">Delete Server</button>
-<ul class="w3-panel w3-light-gray w3-ul">
-    <span class="w3-text-green">List of server Added</span>
-    <li *ngFor="let nameServer of serverList;let i = index" [attr.data-index]="i">
-            <span class="w3-badge w3-green">{{i+1}}</span> {{nameServer}}
-    </li>
-    
-</ul>
-<!----span>We can also do by [innertext] property |here <p [innerText]="allowServerAdd"></p></span-->
-<p *ngIf="noServer==0 || noServer==totalServer">{{ serverStatus }}</p>
-<p>Total Server Limitation {{ totalServer }}</p>
-<p> Number of Server: 
-    {{noServer}} 
+<p class="w3-text-red w3-large" *ngIf="checkButtonStatusAdd() || checkButtonStatusDelete()">
+    {{ serverStatus }}
 </p>
+
+<div class="w3-panel w3-pale-green w3-text-green w3-large" style="font-weight:bold">
+        <span class="">List of server Added</span>
+        <span class="w3-right">Total Server Limitation: {{ totalServer }}</span>
+</div>
+
+<table class="w3-table-all w3-hoverable w3-centered">
+    <tr><th>Id</th><th>Server Name</th><th>Server Activity Action</th></tr>
+    <tr class="" *ngFor="let nameServer of serverList;let i = index" [attr.data-index]="i">
+        <td><span class="w3-badge w3-green">{{i+1}}</span></td>
+        <td>{{nameServer}}  </td>
+        <td>
+            <button class="w3-button w3-blue w3-round w3-small">{{serverActivityStatus}}</button>
+        </td>
+    </tr>    
+</table>
+
+<!----span>We can also do by [innertext] property |here <p [innerText]="allowServerAdd"></p></span-->
+
+
 <app-server></app-server>

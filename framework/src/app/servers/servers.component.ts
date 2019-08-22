@@ -6,56 +6,49 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./servers.component.css']
 })
 export class ServersComponent implements OnInit {
-  disableServerAdd = false;
-  disableServerDelete = false;
-  noServer = 1;
-  serverStatus= "No. Server Created";
+  noServer = 0;
+  serverStatus= "";
   serverName = "";
   totalServer = 10;
+  serverActiveList = [];
+  serverInactiveList = [];
+  serverActivityStatus = "Active";
   serverList = [];
   constructor() { 
-
-    
+    this.serverStatus= "Server Stack is Empty";
   }
 
   ngOnInit() {
   }
   onServerCreation()
   {
-      
-      this.serverStatus = "";
-      if(this.noServer==this.totalServer){
-        this.disableServerAdd = true;
-        this.serverStatus = "Server is Full";
-      }
-      else{
+        this.serverStatus = "";
         this.serverList.push(this.serverName);
         this.noServer=this.serverList.length;
-        console.log(this.serverList);
-      }   
-        if(this.noServer>0){
-          this.disableServerDelete = false;
-        }
+        console.log(this.serverList);  
+       
   }
   onServerDelete(){
-    
-    if(this.noServer<this.totalServer)
-    {
-      this.disableServerAdd = false;
-    }
-    if(this.noServer==0)
-    {
-      this.disableServerDelete = true;
-      this.serverStatus = "Empty Server";
-      this.serverList = []
-    }
-    else{
       this.serverStatus = "";
       this.serverList.pop();
       this.noServer=this.serverList.length;
-    }
   }
-
+  checkButtonStatusAdd()
+  {
+    if(this.noServer==this.totalServer){
+      this.serverStatus = "Server Stack is Full";
+      return true;
+    }
+    return false;
+  }
+  checkButtonStatusDelete()
+  {
+    if(this.noServer==0){
+      this.serverStatus = "Server Stack is Empty";
+      return true;
+    }
+    return false;
+  }
   onServerNameUpdate(event:any)
   {
     //console.log(event.target.value);
