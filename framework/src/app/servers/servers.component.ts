@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServersComponent implements OnInit {
   disableServerAdd = false;
-  noServer = 0;
-  serverStatus= "No Server Created";
+  disableServerDelete = false;
+  noServer = 1;
+  serverStatus= "No. Server Created";
+  totalServer = 10;
   constructor() { 
 
     
@@ -18,8 +20,26 @@ export class ServersComponent implements OnInit {
   }
   onServerCreation()
   {
-    this.noServer+=1;
-    this.serverStatus = "";
-
+      this.noServer+=1;
+      this.serverStatus = "";
+      if(this.noServer==this.totalServer){
+        this.disableServerAdd = true;
+        this.serverStatus = "Server is Full";
+  }   
+        if(this.noServer>=0){
+          this.disableServerDelete = false;
+        }
+  }
+  onServerDelete(){
+    this.noServer-=1;
+    if(this.noServer<=this.totalServer)
+    {
+      this.disableServerAdd = false;
+    }
+    if(this.noServer==0)
+    {
+      this.disableServerDelete = true;
+      this.serverStatus = "Empty Server";
+    }
   }
 }
