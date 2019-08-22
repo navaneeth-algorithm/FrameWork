@@ -1,0 +1,6 @@
+<p>tHis sErveR with iD {{ serverId }} and status is {{ serverStatus }}</p>
+<p> 
+    Name of Server : {{ getServerName() }}
+     <br>Its Location Resides in 
+    <li *ngFor="let location of locations">{{ location }}</li>
+</p>
