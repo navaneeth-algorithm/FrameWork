@@ -1,13 +1,22 @@
+
+
+<input class="w3-input" (input)="onServerNameUpdate($event)" placeholder="Enter Your Server Name" />
+<p>You Entered: {{ serverName }}</p>
 <button class="w3-button w3-blue w3-round w3-small" [disabled]="disableServerAdd" 
 (click)="onServerCreation()">Add Server</button>
 <button class="w3-button w3-blue w3-round w3-small w3-margin" [disabled]="disableServerDelete" 
 (click)="onServerDelete()">Delete Server</button>
-<p>{{allowServerAdd}}</p>
+<ul class="w3-panel w3-light-gray w3-ul">
+    <span class="w3-text-green">List of server Added</span>
+    <li *ngFor="let nameServer of serverList;let i = index" [attr.data-index]="i">
+            <span class="w3-badge w3-green">{{i+1}}</span> {{nameServer}}
+    </li>
+    
+</ul>
 <!----span>We can also do by [innertext] property |here <p [innerText]="allowServerAdd"></p></span-->
 <p *ngIf="noServer==0 || noServer==totalServer">{{ serverStatus }}</p>
 <p>Total Server Limitation {{ totalServer }}</p>
 <p> Number of Server: 
     {{noServer}} 
 </p>
-
 <app-server></app-server>

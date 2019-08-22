@@ -10,7 +10,9 @@ export class ServersComponent implements OnInit {
   disableServerDelete = false;
   noServer = 1;
   serverStatus= "No. Server Created";
+  serverName = "";
   totalServer = 10;
+  serverList = [];
   constructor() { 
 
     
@@ -20,18 +22,23 @@ export class ServersComponent implements OnInit {
   }
   onServerCreation()
   {
-      this.noServer+=1;
+      
       this.serverStatus = "";
       if(this.noServer==this.totalServer){
         this.disableServerAdd = true;
         this.serverStatus = "Server is Full";
-  }   
+      }
+      else{
+        this.serverList.push(this.serverName);
+        this.noServer+=1;
+        console.log(this.serverList);
+      }   
         if(this.noServer>=0){
           this.disableServerDelete = false;
         }
   }
   onServerDelete(){
-    this.noServer-=1;
+    
     if(this.noServer<=this.totalServer)
     {
       this.disableServerAdd = false;
@@ -40,6 +47,17 @@ export class ServersComponent implements OnInit {
     {
       this.disableServerDelete = true;
       this.serverStatus = "Empty Server";
+      this.serverList = []
     }
+    else{
+      this.serverList.pop();
+      this.noServer-=1;
+    }
+  }
+
+  onServerNameUpdate(event:any)
+  {
+    //console.log(event.target.value);
+    this.serverName = event.target.value;
   }
 }
