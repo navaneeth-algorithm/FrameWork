@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/w3-css/w3.css",
               "src/styles.css"
             ],
             "scripts": []
