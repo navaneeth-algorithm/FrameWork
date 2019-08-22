@@ -30,16 +30,16 @@ export class ServersComponent implements OnInit {
       }
       else{
         this.serverList.push(this.serverName);
-        this.noServer+=1;
+        this.noServer=this.serverList.length;
         console.log(this.serverList);
       }   
-        if(this.noServer>=0){
+        if(this.noServer>0){
           this.disableServerDelete = false;
         }
   }
   onServerDelete(){
     
-    if(this.noServer<=this.totalServer)
+    if(this.noServer<this.totalServer)
     {
       this.disableServerAdd = false;
     }
@@ -50,8 +50,9 @@ export class ServersComponent implements OnInit {
       this.serverList = []
     }
     else{
+      this.serverStatus = "";
       this.serverList.pop();
-      this.noServer-=1;
+      this.noServer=this.serverList.length;
     }
   }
 
