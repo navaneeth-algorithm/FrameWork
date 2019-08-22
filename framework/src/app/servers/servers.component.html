@@ -1,4 +1,9 @@
-<button class="w3-button w3-blue w3-round w3-small" [disabled]="!allowServerAdd">Add Server</button>
+<button class="w3-button w3-blue w3-round w3-small" [disabled]="disableServerAdd" 
+(click)="onServerCreation()">Add Server</button>
 <p>{{allowServerAdd}}</p>
-<span>We can also do by [innertext] property |here <p [innerText]="allowServerAdd"></p></span>
+<!----span>We can also do by [innertext] property |here <p [innerText]="allowServerAdd"></p></span-->
+<p>{{ serverStatus }}</p>
+
+<p> Number of Server: {{noServer}} </p>
+
 <app-server></app-server>
