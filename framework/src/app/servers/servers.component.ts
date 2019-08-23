@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServersComponent implements OnInit {
   noServer = 0;
-  serverStatus= "";
+  serverstackStatus= "";
+  serverformStatus = false;
   serverName = "";
   totalServer = 10;
 
@@ -20,28 +21,29 @@ export class ServersComponent implements OnInit {
   nameUser = '';
   passwordUser = '';
   constructor() { 
-    this.serverStatus= "Server Stack is Empty";
+    this.serverstackStatus= "Server Stack is Empty";
   }
 
   ngOnInit() {
   }
   onServerCreation()
   {
-        this.serverStatus = "";
+        this.serverstackStatus = "";
         this.serverList.push(this.serverName);
         this.noServer=this.serverList.length;
+        this.serverformStatus = true;
         console.log(this.serverList);  
        
   }
   onServerDelete(){
-      this.serverStatus = "";
+      this.serverstackStatus = "";
       this.serverList.pop();
       this.noServer=this.serverList.length;
   }
   checkButtonStatusAdd()
   {
     if(this.noServer==this.totalServer){
-      this.serverStatus = "Server Stack is Full";
+      this.serverstackStatus = "Server Stack is Full";
       return true;
     }
     return false;
@@ -49,7 +51,7 @@ export class ServersComponent implements OnInit {
   checkButtonStatusDelete()
   {
     if(this.noServer==0){
-      this.serverStatus = "Server Stack is Empty";
+      this.serverstackStatus = "Server Stack is Empty";
       return true;
     }
     return false;
@@ -58,5 +60,14 @@ export class ServersComponent implements OnInit {
   {
     //console.log(event.target.value);
     this.serverName = event.target.value;
+  }
+  getServerFormStatus()
+  {
+    //This combines with formStatus to display Server Created message for 3sec
+    setTimeout(() => {
+      this.serverformStatus = false;
+    }, 3000);
+    
+    return this.serverformStatus;
   }
 }

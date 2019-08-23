@@ -15,12 +15,19 @@
 
         <button class="w3-button w3-blue w3-round w3-small" [disabled]="checkButtonStatusAdd()" 
         (click)="onServerCreation()">Create Server</button>
-        <button class="w3-button w3-blue w3-round w3-small w3-margin" [disabled]="checkButtonStatusDelete()" 
-        (click)="onServerDelete()">Delete Server</button>
+        <!--Here When Create Server button is clicked serverformStatus is setted to True
+            getServerFormStatus returns the serverformStatus value and has settimeout function
+            which will set serverformStatus value to false after 3sec
+            So Combining both we are displaying server created message for 3sec 
+        -->
+        <p class="w3-text-green w3-large" *ngIf="serverformStatus && getServerFormStatus()">
+            Server  with  <span class='w3-green'>{{serverName }}</span> and 
+            User with name <span class='w3-green'> {{nameUser}} </span> is Created"
+        </p>
 </div>
 
 <p class="w3-text-red w3-large" *ngIf="checkButtonStatusAdd() || checkButtonStatusDelete()">
-    {{ serverStatus }}
+    {{ serverstackStatus }}
 </p>
 
 <div class="w3-panel w3-pale-green w3-text-green w3-large" style="font-weight:bold">
@@ -29,12 +36,14 @@
 </div>
 
 <table class="w3-table-all w3-hoverable w3-centered">
-    <tr><th>Id</th><th>Server Name</th><th>Server Activity Action</th></tr>
+    <tr><th>Id</th><th>Server Name</th><th>Server Action</th></tr>
     <tr class="" *ngFor="let nameServer of serverList;let i = index" [attr.data-index]="i">
         <td><span class="w3-badge w3-green">{{i+1}}</span></td>
         <td>{{nameServer}}  </td>
         <td>
             <button class="w3-button w3-blue w3-round w3-small">{{serverActivityStatus}}</button>
+            <button class="w3-button w3-blue w3-round w3-small w3-margin-left" [disabled]="checkButtonStatusDelete()" 
+            (click)="onServerDelete()">Delete Server</button>
         </td>
     </tr>    
 </table>
