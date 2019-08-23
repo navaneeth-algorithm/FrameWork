@@ -1,5 +1,5 @@
 
-<div class="w3-panel w3-pale-green">
+<div class="w3-card w3-pale-green w3-padding">
         <p class="w3-center w3-large w3-green w3-round" style="font-weight: bold">
             ADD YOUR SERVER
         </p>
@@ -9,7 +9,7 @@
             $event.target.value will have data we enetered
             $event.data will have keystroke
           -->
-          <span class="w3-row w3-green w3-margin">SERVER FIELD</span>
+          <p class="w3-row w3-green w3-margin w3-center w3-card w3-round " style="width:10%;">SERVER FIELD</p>
         <input class="w3-input" (input)="onServerNameUpdate($event)" placeholder="Enter Your Server Name" />
         <p class="w3-large w3-text-green" >You Entered: {{ serverName }}</p>
 
@@ -17,7 +17,7 @@
             FormsModule should be imported in the appModule which lies in
             @angular/forms path
         -->
-        <span class="w3-row w3-green w3-margin">USER FIELD</span>
+        <p class="w3-row w3-green w3-margin w3-center w3-card w3-round " style="width:10%;">USER FIELD</p>
         <input class="w3-input" placeholder="Enter Your Name(Optional)" [(ngModel)]="nameUser" />
         <input class="w3-input" type="password" placeholder="Enter Your Password(optional)" [(ngModel)]="passwordUser" />
         <!--Here we are doing string interpulation bindig using {{}} where
@@ -50,8 +50,8 @@
             It act as if statement which takes expression with boolean Operators or values
         -->
         <p class="w3-text-green w3-large" *ngIf="serverformStatus && getServerFormStatus()">
-            Server  with  <span class='w3-green'>{{serverName }}</span>
-           <span *ngIf="nameUser"> and User with name <span class='w3-green'> {{nameUser}} </span> </span> is Created"
+            Server  with  <span class='w3-green w3-center w3-card w3-round w3-padding w3-margin'>{{serverName }}</span>
+           <span *ngIf="nameUser"> and User with name <span class='w3-green w3-center w3-card w3-round w3-padding w3-margin'> {{nameUser}} </span> </span> is Created"
         </p>
 </div>
 
