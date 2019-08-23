@@ -9,13 +9,15 @@
             $event.target.value will have data we enetered
             $event.data will have keystroke
           -->
+          <span class="w3-row w3-green w3-margin">SERVER FIELD</span>
         <input class="w3-input" (input)="onServerNameUpdate($event)" placeholder="Enter Your Server Name" />
-        <p class="w3-large w3-text-green">You Entered: {{ serverName }}</p>
+        <p class="w3-large w3-text-green" >You Entered: {{ serverName }}</p>
 
         <!--Here We are doing both event & propery Binding [()]
             FormsModule should be imported in the appModule which lies in
             @angular/forms path
         -->
+        <span class="w3-row w3-green w3-margin">USER FIELD</span>
         <input class="w3-input" placeholder="Enter Your Name(Optional)" [(ngModel)]="nameUser" />
         <input class="w3-input" type="password" placeholder="Enter Your Password(optional)" [(ngModel)]="passwordUser" />
         <!--Here we are doing string interpulation bindig using {{}} where
@@ -36,6 +38,8 @@
         -->
         <button class="w3-button w3-blue w3-round w3-small" [disabled]="checkButtonStatusAdd()||!serverName" 
         (click)="onServerCreation()">Create Server</button>
+
+        <button class="w3-button w3-blue w3-round w3-small w3-margin" (click)="nameUser=passwordUser=''">Reset User Field</button>
 
         <!--Here When Create Server button is clicked serverformStatus is setted to True
             getServerFormStatus returns the serverformStatus value and has settimeout function
