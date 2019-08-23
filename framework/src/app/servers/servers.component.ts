@@ -28,6 +28,7 @@ export class ServersComponent implements OnInit {
   }
   onServerCreation()
   {
+    //This function adds the Server name to the List and called when CreateServer button is clicked
         this.serverstackStatus = "";
         this.serverList.push(this.serverName);
         this.noServer=this.serverList.length;
@@ -35,9 +36,18 @@ export class ServersComponent implements OnInit {
         console.log(this.serverList);  
        
   }
-  onServerDelete(){
+  onServerDelete(element:number){
       this.serverstackStatus = "";
-      this.serverList.pop();
+
+      //Delete Only assgn eleemnt to undefined
+      //delete this.serverList[element];
+
+      //This splice takes index of element nd no of element to del starting
+      //from that index
+      this.serverList.splice(element,1);
+      
+      //Pop removes last element
+      //this.serverList.pop();
       this.noServer=this.serverList.length;
   }
   checkButtonStatusAdd()

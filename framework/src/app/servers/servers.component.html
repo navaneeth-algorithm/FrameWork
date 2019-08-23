@@ -3,22 +3,47 @@
         <p class="w3-center w3-large w3-green w3-round" style="font-weight: bold">
             ADD YOUR SERVER
         </p>
+        <!--Here event binding is Done with (EventName)
+            Here Event is input , whenever invoked it has $event which will be having
+            data corresponding to event.So we are passing $event to Our Custom function
+            $event.target.value will have data we enetered
+            $event.data will have keystroke
+          -->
         <input class="w3-input" (input)="onServerNameUpdate($event)" placeholder="Enter Your Server Name" />
         <p class="w3-large w3-text-green">You Entered: {{ serverName }}</p>
 
+        <!--Here We are doing both event & propery Binding [()]
+            FormsModule should be imported in the appModule which lies in
+            @angular/forms path
+        -->
         <input class="w3-input" placeholder="Enter Your Name" [(ngModel)]="nameUser" />
         <input class="w3-input" type="password" placeholder="Enter Your Password" [(ngModel)]="passwordUser" />
+        <!--Here we are doing string interpulation bindig using {{}} where
+            Data can be binded to the Html element 
+        -->
         <p class="w3-text-green w3-large">
                 <span class="">User Name: {{nameUser}}</span>
                 <span class="w3-right">Password: {{passwordUser}}</span>
         </p>
+        <!-- Here we are doing proprty binding []
+            Each property will take particular value
+            disabled property takes boolean value which can be assgned with our
+            function which return boolean value OR variable with boolean type
 
+            Also Event Binding (click)
+            In javascript OnClick,OnMouseIn,..etc is used but here we can remove 
+            On prefix and include only click,mousein,mouseout...etc
+        -->
         <button class="w3-button w3-blue w3-round w3-small" [disabled]="checkButtonStatusAdd()" 
         (click)="onServerCreation()">Create Server</button>
+
         <!--Here When Create Server button is clicked serverformStatus is setted to True
             getServerFormStatus returns the serverformStatus value and has settimeout function
             which will set serverformStatus value to false after 3sec
             So Combining both we are displaying server created message for 3sec 
+        -->
+        <!--Here ngIf is a direcive to check Condition
+            It act as if statement which takes expression with boolean Operators or values
         -->
         <p class="w3-text-green w3-large" *ngIf="serverformStatus && getServerFormStatus()">
             Server  with  <span class='w3-green'>{{serverName }}</span> and 
@@ -37,13 +62,18 @@
 
 <table class="w3-table-all w3-hoverable w3-centered">
     <tr><th>Id</th><th>Server Name</th><th>Server Action</th></tr>
+    
+    <!--Here Directive is for loop ngFor.
+        Also index using proprty binding [attr.data-index] = "i" where i is
+        our own variable
+    -->
     <tr class="" *ngFor="let nameServer of serverList;let i = index" [attr.data-index]="i">
         <td><span class="w3-badge w3-green">{{i+1}}</span></td>
         <td>{{nameServer}}  </td>
         <td>
             <button class="w3-button w3-blue w3-round w3-small">{{serverActivityStatus}}</button>
             <button class="w3-button w3-blue w3-round w3-small w3-margin-left" [disabled]="checkButtonStatusDelete()" 
-            (click)="onServerDelete()">Delete Server</button>
+            (click)="onServerDelete(i)">Delete Server</button>
         </td>
     </tr>    
 </table>
