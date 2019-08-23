@@ -5,8 +5,16 @@
         </p>
         <input class="w3-input" (input)="onServerNameUpdate($event)" placeholder="Enter Your Server Name" />
         <p class="w3-large w3-text-green">You Entered: {{ serverName }}</p>
+
+        <input class="w3-input" placeholder="Enter Your Name" [(ngModel)]="nameUser" />
+        <input class="w3-input" type="password" placeholder="Enter Your Password" [(ngModel)]="passwordUser" />
+        <p class="w3-text-green w3-large">
+                <span class="">User Name: {{nameUser}}</span>
+                <span class="w3-right">Password: {{passwordUser}}</span>
+        </p>
+
         <button class="w3-button w3-blue w3-round w3-small" [disabled]="checkButtonStatusAdd()" 
-        (click)="onServerCreation()">Add Server</button>
+        (click)="onServerCreation()">Create Server</button>
         <button class="w3-button w3-blue w3-round w3-small w3-margin" [disabled]="checkButtonStatusDelete()" 
         (click)="onServerDelete()">Delete Server</button>
 </div>

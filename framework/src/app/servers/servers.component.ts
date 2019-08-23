@@ -10,10 +10,15 @@ export class ServersComponent implements OnInit {
   serverStatus= "";
   serverName = "";
   totalServer = 10;
+
   serverActiveList = [];
   serverInactiveList = [];
   serverActivityStatus = "Active";
+
   serverList = [];
+
+  nameUser = '';
+  passwordUser = '';
   constructor() { 
     this.serverStatus= "Server Stack is Empty";
   }
