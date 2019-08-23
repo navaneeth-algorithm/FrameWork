@@ -16,8 +16,8 @@
             FormsModule should be imported in the appModule which lies in
             @angular/forms path
         -->
-        <input class="w3-input" placeholder="Enter Your Name" [(ngModel)]="nameUser" />
-        <input class="w3-input" type="password" placeholder="Enter Your Password" [(ngModel)]="passwordUser" />
+        <input class="w3-input" placeholder="Enter Your Name(Optional)" [(ngModel)]="nameUser" />
+        <input class="w3-input" type="password" placeholder="Enter Your Password(optional)" [(ngModel)]="passwordUser" />
         <!--Here we are doing string interpulation bindig using {{}} where
             Data can be binded to the Html element 
         -->
@@ -34,7 +34,7 @@
             In javascript OnClick,OnMouseIn,..etc is used but here we can remove 
             On prefix and include only click,mousein,mouseout...etc
         -->
-        <button class="w3-button w3-blue w3-round w3-small" [disabled]="checkButtonStatusAdd()" 
+        <button class="w3-button w3-blue w3-round w3-small" [disabled]="checkButtonStatusAdd()||!serverName" 
         (click)="onServerCreation()">Create Server</button>
 
         <!--Here When Create Server button is clicked serverformStatus is setted to True

@@ -30,10 +30,11 @@ export class ServersComponent implements OnInit {
   {
     //This function adds the Server name to the List and called when CreateServer button is clicked
         this.serverstackStatus = "";
-        this.serverList.push(this.serverName);
-        this.noServer=this.serverList.length;
-        this.serverformStatus = true;
-        console.log(this.serverList);  
+       
+          this.serverList.push(this.serverName);
+          this.noServer=this.serverList.length;
+          this.serverformStatus = true;
+          console.log(this.serverList);       
        
   }
   onServerDelete(element:number){
@@ -45,18 +46,18 @@ export class ServersComponent implements OnInit {
       //This splice takes index of element nd no of element to del starting
       //from that index
       this.serverList.splice(element,1);
-      
+
       //Pop removes last element
       //this.serverList.pop();
       this.noServer=this.serverList.length;
   }
-  checkButtonStatusAdd()
+  checkButtonStatusAdd(setStatus=false)
   {
     if(this.noServer==this.totalServer){
       this.serverstackStatus = "Server Stack is Full";
       return true;
     }
-    return false;
+    return setStatus;
   }
   checkButtonStatusDelete()
   {
