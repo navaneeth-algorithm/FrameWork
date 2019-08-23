@@ -46,8 +46,8 @@
             It act as if statement which takes expression with boolean Operators or values
         -->
         <p class="w3-text-green w3-large" *ngIf="serverformStatus && getServerFormStatus()">
-            Server  with  <span class='w3-green'>{{serverName }}</span> and 
-            User with name <span class='w3-green'> {{nameUser}} </span> is Created"
+            Server  with  <span class='w3-green'>{{serverName }}</span>
+           <span *ngIf="nameUser"> and User with name <span class='w3-green'> {{nameUser}} </span> </span> is Created"
         </p>
 </div>
 
